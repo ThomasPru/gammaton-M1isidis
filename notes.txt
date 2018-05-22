@@ -1,0 +1,21 @@
+Taches :
+- creation d'un github
+- creer la classe du gammaton
+
+- generer une pluie de gammatons
+- appliquer un comportement a l'impact du gammaton (rebondissement, reflection)
+- enregistrer les points d'impact grace a la gammaton-map
+- appliquer les effets de vieillissement selon les impacts
+
+-creer une scene finale
+
+-creation du cahier des charges
+-rapports
+-preparer la soutenance
+
+----------------------------
+
+organisation :
+github, issues
+
+------------------------------------------------------------------
