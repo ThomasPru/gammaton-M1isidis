@@ -6,9 +6,6 @@
 
 
 //------------------
-//--Ajouts
-#include "ton.hpp"
-//------------------
 extern float angle_rotX;
 extern float angle_rotY;
 extern float trans_axeZ;

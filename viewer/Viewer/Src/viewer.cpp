@@ -75,21 +75,8 @@ int main (int argc, char *argv[])
 
   OBJReader r("./Scenes", "cube1.obj");
   //-----------------
-  //r.importMaterial("./Scenes", "cube1.mtl");
   
   //---------------------
-
-  //--------
-  /*
-  vector<ton> ton_list = vector<ton>();
-  
-  for(int i = 0; i < 50; i++){
-    ton t(0.5, 0.5, 0.5,
-	  0.5, 0.5, 0.5,
-	  rand()%2-1, 10, rand()%2 -1);
-    ton_list.push_back(t);
-  }
-  */
   //--------
   
   init_screen();
