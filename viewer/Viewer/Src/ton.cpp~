@@ -8,6 +8,10 @@ ton::ton(float ks, float kp, float kf, float sh, float sd, float sf){
   _sh = sh;
   _sd = sd;
   _sf = sf;
+
+  _posX = rand()%1-0.5;
+  _posY = 10;
+  _posZ = rand()%1-0.5;;
 }
 
 float ton::getStraightLine(){
@@ -28,4 +32,23 @@ float ton::getAmountDirt(){
 }
 float ton::getAmountFungus(){
   return _sf;
+}
+
+
+
+
+float ton::getX(){
+  return _posX;
+}
+float ton::getY(){
+  return _posY;
+}
+float ton::getZ(){
+  return _posZ;
+}
+
+void ton::setNewPosition(float x, float y, float z){
+  _posX += x;
+  _posY += y;
+  _posZ += z;
 }

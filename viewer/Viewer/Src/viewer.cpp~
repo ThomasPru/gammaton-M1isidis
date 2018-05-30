@@ -5,6 +5,8 @@
 #include "graphique.h"
 #include "touches.h"
 
+#include "gammaton_generator.hpp"
+
 #include "Obj/OBJReader.hpp"
 #include <iostream>
 

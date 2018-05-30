@@ -8,14 +8,14 @@ ostream& operator<<(ostream& out, const Cpoint& p){
   return out;
 }
 
-double Cpoint::getX() const{
+double getX() const{
   return x;
 }
 
-double Cpoint::getY() const{
+double getY() const{
   return y;
 }
 
-double Cpoint::getZ() const{
+double getZ() const{
   return z;
 }

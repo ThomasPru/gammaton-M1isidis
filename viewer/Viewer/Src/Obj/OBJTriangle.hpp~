@@ -17,7 +17,6 @@ using namespace std;
 
 
 class CIntersection;
-class OBJReader;
 
 class OBJTriangle {
 private:
@@ -32,7 +31,7 @@ public:
 
   OBJVertex getVertex(int i);
 
-  bool getIntersectionWithRay(const CRay& incidentRay, CIntersection *I, OBJReader &r);
+  bool getIntersectionWithRay(const CRay& incidentRay, CIntersection *I);
 
   friend ostream& operator<<(ostream& out, const OBJTriangle& t);
 };

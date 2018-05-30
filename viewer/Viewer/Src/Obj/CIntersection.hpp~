@@ -1,0 +1,14 @@
+#ifndef CINTERSECTION_HPP_
+#define CINTERSECTION_HPP_
+
+class CIntersection : public Point {
+private:
+  Objet *objet;// objet sur lequel se situe l’intersection
+  float distance;// distance param ́etrique par rapport `a l’origine du rayon
+public:
+  CIntersection();
+  CIntersection(const Point& p, Objet* o, const float& t);
+  ~Intersection(){}; // ne pas effacer objet !!!
+};
+
+#endif

@@ -1,6 +1,9 @@
 #ifndef TON_HPP_
 #define TON_HPP_
 
+#include <time.h>
+#include <stdlib.h>
+
 class ton{
 private:
   //motion probabilities : straight line, parabolic curve, flowing
@@ -8,6 +11,9 @@ private:
 
   //Carrier attributes : humidity, amount of dirt, amount of fungus
   float _sh, _sd, _sf;
+
+  //position
+  float _posX, _posY, _posZ;
 
 public:
   ton(float ks, float kp, float kf, float sh, float sd, float sf);
@@ -19,6 +25,14 @@ public:
   float getHumidity();
   float getAmountDirt();
   float getAmountFungus();
+
+  float getX();
+  float getY();
+  float getZ();
+
+  void setNewPosition(float x, float y, float z);
+
+  
 };
 
 #endif

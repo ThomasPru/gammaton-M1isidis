@@ -25,11 +25,17 @@ public:
 
   //-----------------------
   //----accesseurs
-  double getX() const;
+  double getX(){
+    return x;
+  }
 
-  double getY() const;
+  double getY(){
+    return y;
+  }
 
-  double getZ() const;
+  double getZ(){
+    return z;
+  }
   
   //----------------------
 
@@ -72,5 +78,5 @@ public:
 };
 
 
-//typedef Cpoint  Cvector ;
+typedef Cpoint  Cvector ;
 #endif

@@ -1,0 +1,23 @@
+#include "gammaton_generator.hpp"
+
+
+gammaton_generator::gammaton_generator(float x_axe, float y_axe, float z_axe, int nbGam){
+  x_axis = x_axe;
+  y_axis = y_axe;
+  z_axys = z_axe;
+
+  //posX = 0
+  //posY = 10
+  //posZ = 0
+  
+  for(int i = 0; i < nbGam; i++){
+    ton t = new t(0.5, 0.5, 0.5, 0.5, 0.5, 0.5);
+    list_tons.add(t);
+  }
+}
+
+void gammaton_generator::MoveGamaMove_gammatons(){
+  for(int i = 0; i < list_tons.size(); i++){
+    list_tons[i].
+  }
+}

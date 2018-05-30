@@ -1,0 +1,54 @@
+#include "CRay.hpp"
+
+CRay::CRay(float ks, float kp, float kf,
+	   float sh, float sd, float sf,
+	   Cpoint p){
+  _ks = ks;
+  _kp = kp;
+  _kf = kf;
+  
+  _sh = sh;
+  _sd = sd;
+  _sf = sf;
+
+  origin = p;
+  //rand()%1-0.5
+  
+}
+
+float CRay::getStraightLine(){
+  return _ks;
+}
+float CRay::getParabolicCurve(){
+  return _kp;
+}
+float CRay::getFlowing(){
+  return _kf;
+}
+  
+float CRay::getHumidity(){
+  return _sh;
+}
+float CRay::getAmountDirt(){
+  return _sd;
+}
+float CRay::getAmountFungus(){
+  return _sf;
+}
+
+
+Cpoint CRay::getOrigin() const{
+  return origin;
+}
+
+float CRay::getDirX() const{
+    return _depX;
+}
+
+float CRay::getDirY() const{
+  return _depY;
+}
+
+float CRay::getDirZ() const{
+  return _depZ;
+}

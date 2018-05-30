@@ -1,0 +1,19 @@
+#ifndef GAMMATON_GENERATOR_HPP_
+#define GAMMATON_GENERATOR_HPP_
+
+using namespace std;
+
+#include <vector>
+
+
+class gammaton_generator{
+private:
+  vector <ton> list_tons;
+  float x_axis, y_axi, z_axis;
+  
+public:
+  gammaton_generator(float x_axe, float y_axe, float z_axe, int nb_gammatons);
+  void Move_gammatons();
+};
+
+#endif
