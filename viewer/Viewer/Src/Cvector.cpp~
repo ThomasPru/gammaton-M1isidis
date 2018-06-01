@@ -7,15 +7,15 @@ Cvector::Cvector(){
 }
 
 Cvector::Cvector(const Cvector &cv){
-  x = cv->getX();
-  y = cv->getY();
-  z = cv->getZ();
+  x = cv.getX();
+  y = cv.getY();
+  z = cv.getZ();
 }
 
-Cvector::Cvector(Cpoint *a, Cpoint *b){
-  x = a->getX() - b->getX();
-  y = a->getY() - b->getY();
-  z = a->getZ() - b->getZ();
+Cvector::Cvector(Cpoint a, Cpoint b){
+  x = a.getX() - b.getX();
+  y = a.getY() - b.getY();
+  z = a.getZ() - b.getZ();
 }
 
 void Cvector::assign( float vx, float vy, float vz ){

@@ -3,12 +3,14 @@
 #include <glut.h>
 
 #include <iostream>
-
+#include "Obj/OBJReader.hpp"
 
 //------------------
 extern float angle_rotX;
 extern float angle_rotY;
 extern float trans_axeZ;
+
+extern OBJReader r;
 
 /** 
  * Fonction permettant de dessiner un cube centré sur l'origine 
@@ -112,7 +114,8 @@ void dessiner(void)
   glTranslatef(0.0, 0.0, trans_axeZ);
   glRotatef(angle_rotX, 1.0, 0.0, 0.0);
   glRotatef(angle_rotY, 0.0, 1.0, 0.0);
-  cube(2.0);
+  //cube(2.0);
+  r.drawScene();
   
   repere(2.0);
   

@@ -58,7 +58,7 @@ $(OBJ)/OBJGroupList.o:	$(SRC)/Obj/OBJGroupList.cpp $(SRC)/Obj/OBJGroupList.hpp
 	g++ -c $(SRC)/Obj/OBJGroupList.cpp -o $(OBJ)/OBJGroupList.o    $(OPT)
 
 $(OBJ)/OBJTriangle.o:	$(SRC)/Obj/OBJTriangle.cpp $(SRC)/Obj/OBJTriangle.hpp
-	g++ -c $(SRC)/Obj/OBJTriangle.cpp -o $(OBJ)/OBJTriangle.o   $(OPT)
+	g++ -c $(SRC)/Obj/OBJTriangle.cpp -o $(OBJ)/OBJTriangle.o	$(OPT) $(INCLUDE) $(OPT)
 
 
 $(OBJ)/OBJLight.o:	$(SRC)/Obj/OBJLight.cpp $(SRC)/Obj/OBJLight.hpp
@@ -74,7 +74,7 @@ $(OBJ)/OBJVertex.o:	$(SRC)/Obj/OBJVertex.cpp $(SRC)/Obj/OBJVertex.hpp
 	g++ -c $(SRC)/Obj/OBJVertex.cpp -o $(OBJ)/OBJVertex.o    $(OPT)
 
 $(OBJ)/OBJReader.o:	$(SRC)/Obj/OBJReader.cpp $(SRC)/Obj/OBJReader.hpp $(SRC)/Obj/OBJMaterial.hpp  $(SRC)/Obj/OBJGroupList.hpp  $(SRC)/Obj/OBJGroup.hpp
-	g++ -c $(SRC)/Obj/OBJReader.cpp -o $(OBJ)/OBJReader.o    $(OPT)
+	g++ -c $(SRC)/Obj/OBJReader.cpp -o $(OBJ)/OBJReader.o $(OPT) $(INCLUDE)  $(OPT)
 
 # cible d'effacement des fichiers objets et de l'exécutable
 

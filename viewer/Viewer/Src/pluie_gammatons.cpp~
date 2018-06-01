@@ -1,0 +1,12 @@
+#include "pluie_gammatons.hpp"
+
+pluie_gammatons::pluie_gammatons(int nb_rayons){
+  for(int i = 0; i < nb_rayons; i++){
+    CRay r = new CRay();
+    list_gam.push_back(c);
+  }
+}
+
+int pluie_gammatons::getSizeListGam(){
+  return list_gam.size();
+}

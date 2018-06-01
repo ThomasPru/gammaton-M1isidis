@@ -81,6 +81,7 @@ public:
    */
   inline void addFacet(OBJTriangle* f){
     facets.push_back(f);
+    cout << "Nb facets ! " << size() << endl;
   }
 
   /**
@@ -88,6 +89,7 @@ public:
    * @return le nombre de facettes gérées par le groupe.
    */
   int size(){
+    cout << "test fonction size " << facets.size() << endl;
     return facets.size();
   }
 

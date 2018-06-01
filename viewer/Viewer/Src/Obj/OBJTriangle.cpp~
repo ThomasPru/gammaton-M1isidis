@@ -1,4 +1,6 @@
 #include "OBJTriangle.hpp"
+#include "OBJReader.hpp"
+#include "CIntersection.hpp"
 
 OBJTriangle::OBJTriangle(){
   for(int i=0; i<3; i++){
@@ -45,14 +47,14 @@ ostream& operator<<(ostream& out, const OBJTriangle& t){
 
 
 
-bool OBJTriangle::getIntersectionWithRay(const CRay& incidentRay, CIntersection *I)
+bool OBJTriangle::getIntersectionWithRay(const CRay& incidentRay, CIntersection *I, OBJReader &r)
 {
    double det,inv_det;
    double u,v,t;
 
    /* find vectors for two edges sharing vert0 */
-   Cvector edge1(point[0], point[1]);
-   Cvector edge2(point[0], point[2]);
+   Cvector edge1(r.getPointList()[point[0].getCoordinate()], r.getPointList()[point[1].getCoordinate()]);
+   Cvector edge2(r.getPointList()[point[0].getCoordinate()], r.getPointList()[point[2].getCoordinate()]);
 
    /* begin calculating determinant - also used to calculate U parameter */
    Cvector pvec(incidentRay.getDirection()^edge2);// Cross product
@@ -62,7 +64,7 @@ bool OBJTriangle::getIntersectionWithRay(const CRay& incidentRay, CIntersection 
    if (det < MOLLEREPSILON) return false;
 
    /* calculate distance from vert0 to ray origin */
-   Cvector tvec(point[0],incidentRay.getOrigin());
+   Cvector tvec(r.getPointList()[point[0].getCoordinate()],incidentRay.getOrigin());
 
    /* calculate U parameter and test bounds */
    u = tvec*pvec; // dot product

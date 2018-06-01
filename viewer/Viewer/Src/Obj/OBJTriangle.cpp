@@ -53,8 +53,8 @@ bool OBJTriangle::getIntersectionWithRay(const CRay& incidentRay, CIntersection 
    double u,v,t;
 
    /* find vectors for two edges sharing vert0 */
-   Cvector edge1(r.getPointList()[point[0].getCoordinate()], r.getPointList()[point[1].getCoordinate()]);
-   Cvector edge2(r.getPointList()[point[0].getCoordinate()], r.getPointList()[point[2].getCoordinate()]);
+   Cvector edge1(r.getPointListInd(point[0].getCoordinate()), r.getPointListInd(point[1].getCoordinate()));
+   Cvector edge2(r.getPointListInd(point[0].getCoordinate()), r.getPointListInd(point[2].getCoordinate()));
 
    /* begin calculating determinant - also used to calculate U parameter */
    Cvector pvec(incidentRay.getDirection()^edge2);// Cross product
@@ -64,7 +64,7 @@ bool OBJTriangle::getIntersectionWithRay(const CRay& incidentRay, CIntersection 
    if (det < MOLLEREPSILON) return false;
 
    /* calculate distance from vert0 to ray origin */
-   Cvector tvec(r.getPointList()[point[0].getCoordinate()],incidentRay.getOrigin());
+   Cvector tvec(r.getPointListInd(point[0].getCoordinate()),incidentRay.getOrigin());
 
    /* calculate U parameter and test bounds */
    u = tvec*pvec; // dot product

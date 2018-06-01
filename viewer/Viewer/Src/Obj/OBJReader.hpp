@@ -13,6 +13,14 @@ class OBJReader;
 #include "OBJMaterial.hpp"
 #include "OBJLight.hpp"
 
+
+//------------------------------
+//---Ajouts
+#include <GL/gl.h>
+#include <GL/glu.h>
+#include <glut.h>
+//------------------------------
+
 #include <list>
 #include <vector>
 #include <string>
@@ -27,6 +35,20 @@ using namespace std;
  */
 class OBJReader  
 {
+public:
+  void drawScene();
+
+  vector<Cpoint> getPointList() const{
+    return pointlist;
+  }
+
+  Cpoint getPointListInd(int i) const{
+    return pointlist[i];
+  }
+
+  OBJGroupList getList() const{
+    return gliste;
+  }
 
 private:
   vector<Cpoint> pointlist;/**< Liste indexée de sommets.*/
@@ -44,6 +66,7 @@ private:
 
   OBJGroupList gliste;/**< liste des groupes (au sens du format obj) constituant la géométrie de la scène */
 
+  
   /**
    * Lit un fichier MTL passé en paramètre et importe les matériaux
    * dans la scène.
@@ -133,7 +156,6 @@ public:
 
   //void toJs(ostream& jsFile);
 
-  vector<Cpoint> getPointList();
 };
 
 #endif 

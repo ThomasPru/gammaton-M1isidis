@@ -90,7 +90,7 @@ OBJReader::OBJReader(const string& dataDirectory,
 	  gliste.addGroup(gcurrent);
 	  gcurrent->setMaterial(materiau_base); // par défaut
 
-	  // 	  cout << "current = " << gcurrent << endl;
+	  //cout<< "current = " << gliste.size() << endl;
 	}
 	  break;
 	case '\n':
@@ -237,6 +237,7 @@ OBJReader::OBJReader(const string& dataDirectory,
 	    P->setNormals(n[0]-1, n[1]-1, n[2]-1);
 	    // voir pour le matériel ...
 	    gcurrent->addFacet(P);
+	    
 
 	    // création éventuelle de la seconde facette
 	    if(nbsom==4){
@@ -281,6 +282,7 @@ OBJReader::OBJReader(const string& dataDirectory,
 	    // lui ajouter le nouveau materiau
 	    gcurrent->setMaterial(currentmaterial);
 	  }
+	  
 
 	  break;
 	}
@@ -430,6 +432,42 @@ void OBJReader::importMaterial(const char* dataDirectory,
 
 
 
+void OBJReader::drawScene(){
+  cout << "------------------------" << endl;
+  
+  OBJGroupList test =  gliste;
+  
+  for(int i = 0; i < test.size(); i++){ //liste des cubes
+    gliste = test;
+    int nb = test.getGroup(i)->size();
+    vector<float> colors;
+    colors.push_back(test.getGroup(i)->getMaterial().getAmbiantColor().r);
+    colors.push_back(test.getGroup(i)->getMaterial().getAmbiantColor().g);
+    colors.push_back(test.getGroup(i)->getMaterial().getAmbiantColor().b);
+    for (int j = 0; j < nb; j++){ // nombre de facettes par objet
+      glBegin(GL_TRIANGLES);
+      glColor3f(colors[0], colors[1], colors[2]);
+      glVertex3f(getPointListInd(gliste.getGroup(i)->getFacet(j)->getVertex(0).getCoordinate()).getX(),
+		 getPointListInd(gliste.getGroup(i)->getFacet(j)->getVertex(0).getCoordinate()).getY(),
+		 getPointListInd(gliste.getGroup(i)->getFacet(j)->getVertex(0).getCoordinate()).getZ());
+      
+      glVertex3f(getPointListInd(gliste.getGroup(i)->getFacet(j)->getVertex(1).getCoordinate()).getX(),
+		 getPointListInd(gliste.getGroup(i)->getFacet(j)->getVertex(1).getCoordinate()).getY(),
+		 getPointListInd(gliste.getGroup(i)->getFacet(j)->getVertex(1).getCoordinate()).getZ());
+  
+      glVertex3f(getPointListInd(gliste.getGroup(i)->getFacet(j)->getVertex(2).getCoordinate()).getX(),
+		 getPointListInd(gliste.getGroup(i)->getFacet(j)->getVertex(2).getCoordinate()).getY(),
+		 getPointListInd(gliste.getGroup(i)->getFacet(j)->getVertex(2).getCoordinate()).getZ());
+      glEnd();
+      
+    }
+    
+  }
+  test.clear();
+
+}
+
+
 void OBJReader::importLight(const char* filename)
 {
   char buffer[256];
@@ -529,6 +567,8 @@ void OBJReader::importLight(const char* filename)
 
 }
 
+
+
 //#define OUT
 /*
 void OBJReader::toLxs(ostream& lxsFile){
@@ -613,6 +653,3 @@ void OBJReader::toJs(ostream& jsFile){
   cout << "fin de conversion des donnees geometriques" << endl;
 }
 */
-vector<Cpoint> OBJReader::getPointList(){
-  return pointlist;
-}

@@ -12,7 +12,7 @@ public:
   float z;
   Cvector();
   Cvector(const Cvector &cv);
-  Cvector(Cpoint *a, Cpoint *b);
+  Cvector(Cpoint a, Cpoint b);
 
   float getX() const;
   float getY() const;

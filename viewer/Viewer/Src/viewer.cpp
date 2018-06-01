@@ -5,20 +5,22 @@
 #include "graphique.h"
 #include "touches.h"
 
+//#include "pluie_gammatons.hpp"
 #include "Obj/OBJReader.hpp"
 #include <iostream>
 
-
-/* dimensions initiales de la fenêtre d'affichage */
+/* dimensions initiales de la fenÃªtre d'affichage */
 #define LARGEUR  512
 #define HAUTEUR  512
 
 float angle_rotY = 0.0;
 float angle_rotX = 0.0;
 float trans_axeZ = -10.0;
+//OBJReader r("./Scenes", "cube1.obj");
 
+OBJReader r("./Scenes", "cube1.obj");
 /**
- * Fonction d'initialisation des paramètres d'affichage
+ * Fonction d'initialisation des paramÃ¨tres d'affichage
  */
 static void init_screen(void)
 {
@@ -37,8 +39,6 @@ static void init_screen(void)
   glLoadIdentity();
   gluPerspective(60.0, 1.0, 1.0, 100.0);
 
-
-
   /* definir le viewport */
   glViewport(0, 0, 255, 50);
   /* attention : annule par l'appel implicite de la fonction */
@@ -49,10 +49,10 @@ static void init_screen(void)
 
 
 /**
- * Fonction principale qui crée et initialise la fenêtre
+ * Fonction principale qui crÃ©e et initialise la fenÃªtre
  * d'affichage et lance la boucle d'affichage Glut.
  * @param argc le nombre d'argument sur la ligne de commande
- * @param argv une table de chaîne de caractères contenant chacun
+ * @param argv une table de chaÃ®ne de caractÃ¨res contenant chacun
  * des arguments de la ligne de commande.
  */
 int main (int argc, char *argv[])
@@ -73,11 +73,10 @@ int main (int argc, char *argv[])
   /* choix de la fonction des gestion des touches */
   glutKeyboardFunc(gerer_clavier);
 
-  OBJReader r("./Scenes", "cube1.obj");
-  //-----------------
   
-  //---------------------
-  //--------
+  
+
+  //-----------------
   
   init_screen();
   

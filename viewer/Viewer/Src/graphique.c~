@@ -3,16 +3,14 @@
 #include <glut.h>
 
 #include <iostream>
+#include "Obj/OBJReader.hpp"
 
-
-//------------------
-//--Ajouts
-#include "Surf.hpp"
-#include "ton.hpp"
 //------------------
 extern float angle_rotX;
 extern float angle_rotY;
 extern float trans_axeZ;
+
+extern OBJReader r;
 
 /** 
  * Fonction permettant de dessiner un cube centré sur l'origine 
@@ -30,20 +28,12 @@ static void cube(float dim)
   glVertex3f( dim/2,  dim/2, dim/2);
   glVertex3f(-dim/2,  dim/2, dim/2);
   
-  Surf c_red(0.5,0.5,0.5, 1.0, 1.0,1.0);
-  
-  std::cout << " humidite de la face rouge : " << c_red.getHumidity() << std::endl;
-	
   /* face droite verte */
   glColor3f(0.0, 1.0, 0.0);
   glVertex3f(dim/2, -dim/2, dim/2);
   glVertex3f(dim/2, -dim/2, -dim/2);
   glVertex3f(dim/2,  dim/2, -dim/2);
   glVertex3f(dim/2,  dim/2, dim/2);
-
-  Surf c_verte(0.5,0.5,0.5, 12.0, 12.0,12.0);
-	
-  std::cout << " humidite de la face verte  : " << c_verte.getHumidity() << std::endl;
 
   /* face gauche jaune */
   glColor3f(1.0, 1.0, 0.0);
@@ -124,8 +114,8 @@ void dessiner(void)
   glTranslatef(0.0, 0.0, trans_axeZ);
   glRotatef(angle_rotX, 1.0, 0.0, 0.0);
   glRotatef(angle_rotY, 0.0, 1.0, 0.0);
-  cube(2.0);
-  
+  //cube(2.0);
+  r.drawScene();
   repere(2.0);
   
   glFlush();
