@@ -124,12 +124,8 @@ void dessiner(void)
     glColor3f((float) rand() / (float) RAND_MAX,
 	      (float) rand() / (float) RAND_MAX,
 	      (float) rand() / (float) RAND_MAX);
-    //list_inter[i].drawSceneIntersection();
-    
-    glBegin(GL_POINTS);
-    glColor3f(0.5,0.5,1);
-    glVertex3f(list_inter[i].getInterX(), list_inter[i].getInterY(), list_inter[i].getInterZ());
-    glEnd();
+    list_inter[i].drawSceneIntersection();
+   
     
   }
   repere(2.0);

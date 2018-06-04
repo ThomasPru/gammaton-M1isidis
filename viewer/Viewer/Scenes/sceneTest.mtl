@@ -1,0 +1,51 @@
+# Blender MTL File: 'None'
+# Material Count: 1
+
+newmtl None
+Ns 0
+Ka 0.600000 0.600000 0.600000
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+
+newmtl mrouge
+Ns 0
+Ka 1.000000 0.000000 0.000000
+Kd 0.8 0.3 0.3
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+
+newmtl mbleu
+Ns 0
+Ka 0.000000 0.000000 1.000000
+Kd 0.2 0.2 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+
+newmtl mvert
+Ns 0
+Ka 0.000000 1.000000 0.000000
+Kd 0.2 0.8 0.2
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+
+
+newmtl mjaune
+Ns 0
+Ka 1.000000 1.000000 0.000000
+Kd 0.8 0.8 0.1
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+
+newmtl msombre
+Ns 0
+Ka 0.800000 0.800000 0.800000
+Kd 0.2 0.2 0.1
+Ks 0.8 0.8 0.8
+d 1
+illum 2

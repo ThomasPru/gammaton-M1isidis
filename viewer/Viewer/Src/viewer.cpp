@@ -20,8 +20,8 @@ float angle_rotY = 0.0;
 float angle_rotX = 0.0;
 float trans_axeZ = -10.0;
 
-OBJReader r("./Scenes", "cube1.obj");
-OBJReader rb("./Scenes", "cube1.obj");
+OBJReader r("./Scenes", "sceneTest.obj");
+OBJReader rb("./Scenes", "sceneTest.obj");
 vector<CIntersection> list_inter;
 /**
  * Fonction d'initialisation des paramètres d'affichage
@@ -82,28 +82,22 @@ int main (int argc, char *argv[])
 
   //----------------------
   OBJGroupList test =  rb.getList();
-  pluie_gammatons rain(10000);
+  pluie_gammatons rain(40000);
   
   for(int i = 0; i < test.size(); i++){ //liste des cubes
     
     int nb = rb.getGroup(i)->size();
    
     for (int j = 0; j < nb; j++){ // nombre de facettes par objet
-      cout << "FACETTE n° " << j+1 << endl;
       for(int k = 0; k < rain.getSizeListGam(); k++){
 	CIntersection inter;
-	cout << "GAMMATON n° " << k+1 << endl;
 	if(rb.getGroup(i)->getFacet(j)->getIntersectionWithRay(rain.getListInd(k),inter)){
-	  cout << "IMPACT" << endl;
 	  list_inter.push_back(inter);
 	}
       }
     }
     cout << "nombre d'intersections : " << list_inter.size() << endl;
   }
-  //test.clear();
-  //r.setGliste(test);
-  //-----------------
   
   init_screen();
   

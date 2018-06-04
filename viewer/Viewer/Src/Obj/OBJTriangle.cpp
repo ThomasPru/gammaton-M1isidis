@@ -86,9 +86,6 @@ bool OBJTriangle::getIntersectionWithRay(const CRay& incidentRay, CIntersection 
    u *= inv_det;
    v *= inv_det;
    
-   cout << " t = " << t << endl;
-   cout << " U = " << u << endl;
-   cout << " V = " << v << endl;
 
    t=sqrt(t*t);
    I.setPosition(t,incidentRay,this,u,v);

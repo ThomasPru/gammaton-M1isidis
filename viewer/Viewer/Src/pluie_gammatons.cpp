@@ -8,10 +8,10 @@ pluie_gammatons::pluie_gammatons(int nb_rayons){
   float sd = 0.0;
   float sf = 0.0;
 
-  Cvector v(-1.0, -1.0, 0.0);
+  Cvector v(0.0, -0.5, 0.5);
   
   for(int i = 0; i < nb_rayons; i++){
-    Cpoint p((2*(float) rand() / RAND_MAX)*8, 5, 2*((float) rand() / RAND_MAX)-1);
+    Cpoint p((7*(float) rand() / RAND_MAX)*2-5, 3, -8*((float) rand() / RAND_MAX));
     
     CRay r(ks, kp, kf, sh, sd, sf, p, v);
     list_gam.push_back(r);
