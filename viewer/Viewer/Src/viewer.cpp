@@ -62,50 +62,52 @@ static void init_screen(void)
 int main (int argc, char *argv[])
 {
 
-  cout << argv[0] << endl;
-  glutInit (&argc, argv);
+	cout << argv[0] << endl;
+	glutInit (&argc, argv);
 
-  glutInitWindowPosition(100, 100); 
-  glutInitWindowSize(LARGEUR, HAUTEUR); 
+	glutInitWindowPosition(100, 100); 
+	glutInitWindowSize(LARGEUR, HAUTEUR); 
 
-  glutInitDisplayMode(GLUT_DEPTH);
+	glutInitDisplayMode(GLUT_DEPTH);
 
-  glutCreateWindow(argv[0]);
+	glutCreateWindow(argv[0]);
 
-  /* choix de la fonction de rafraichissement */
-  glutDisplayFunc(dessiner);
-  /* choix de la fonction des gestion des touches */
-  glutKeyboardFunc(gerer_clavier);
-
-
+	/* choix de la fonction de rafraichissement */
+	glutDisplayFunc(dessiner);
+	/* choix de la fonction des gestion des touches */
+	glutKeyboardFunc(gerer_clavier);
 
 
-  //----------------------
-  OBJGroupList test =  rb.getList();
-  pluie_gammatons rain(40000);
-  
-  for(int i = 0; i < test.size(); i++){ //liste des cubes
-    
-    int nb = rb.getGroup(i)->size();
-   
-    for (int j = 0; j < nb; j++){ // nombre de facettes par objet
-      for(int k = 0; k < rain.getSizeListGam(); k++){
-	CIntersection inter;
-	if(rb.getGroup(i)->getFacet(j)->getIntersectionWithRay(rain.getListInd(k),inter)){
-	  list_inter.push_back(inter);
+
+
+	//----------------------
+	OBJGroupList test =  rb.getList();
+	pluie_gammatons rain(40000);
+
+	bool percut = false;
+
+	for(int k = 0; k < rain.getSizeListGam(); k++){ // pour chaque gammatons
+		for(int i = 0; i < test.size(); i++){ //liste des cubes
+			int nb = rb.getGroup(i)->size();
+			for (int j = 0; j < nb; j++){ // nombre de facettes par objet
+				CIntersection inter;
+				if(rb.getGroup(i)->getFacet(j)->getIntersectionWithRay(rain.getListInd(k),inter) !=-1 && percut == false){
+					list_inter.push_back(inter);
+					percut = true;
+				}
+			  }
+		}
+		percut = false;
+		cout << "nombre d'intersections : " << list_inter.size() << endl;
 	}
-      }
-    }
-    cout << "nombre d'intersections : " << list_inter.size() << endl;
-  }
-  
-  init_screen();
-  
-  glEnable(GL_DEPTH_TEST);
-  glutMainLoop();
-  
 
-  return 0;
+	init_screen();
+
+	glEnable(GL_DEPTH_TEST);
+	glutMainLoop();
+
+
+	return 0;
 }
 
 
