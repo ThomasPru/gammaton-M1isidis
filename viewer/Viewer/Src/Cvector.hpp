@@ -13,6 +13,7 @@ public:
   Cvector();
   Cvector(const Cvector &cv);
   Cvector(Cpoint a, Cpoint b);
+  Cvector(double x_c, double y_c, double z_c);
 
   float getX() const;
   float getY() const;

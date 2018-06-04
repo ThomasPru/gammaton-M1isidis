@@ -18,6 +18,13 @@ Cvector::Cvector(Cpoint a, Cpoint b){
   z = a.getZ() - b.getZ();
 }
 
+Cvector::Cvector(double x_c, double y_c, double z_c){
+  x = x_c;
+  y = y_c;
+  z = z_c;
+}
+
+
 void Cvector::assign( float vx, float vy, float vz ){
   x = vx;
   y = vy;

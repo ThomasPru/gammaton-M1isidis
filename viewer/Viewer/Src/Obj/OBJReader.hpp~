@@ -38,6 +38,22 @@ class OBJReader
 public:
   void drawScene();
 
+  vector<Cpoint> getPointList() const{
+    return pointlist;
+  }
+
+  Cpoint getPointListInd(int i) const{
+    return pointlist[i];
+  }
+
+  OBJGroupList getList() const{
+    return gliste;
+  }
+
+  void setGliste(OBJGroupList liste){
+    gliste = liste;
+  }
+
 private:
   vector<Cpoint> pointlist;/**< Liste indexée de sommets.*/
   vector<Cvector> vecteurlist;/**< Liste indexée de Normales aux sommets.*/
@@ -53,19 +69,6 @@ private:
   vector<Cpoint> srcVertices;/**<liste des sommets des sources surfaciques*/
 
   OBJGroupList gliste;/**< liste des groupes (au sens du format obj) constituant la géométrie de la scène */
-
-  
-  vector<Cpoint> getPointList() const{
-    return pointlist;
-  }
-
-  Cpoint getPointListInd(int i) const{
-    return pointlist[i];
-  }
-
-  OBJGroupList getList() const{
-    return gliste;
-  }
 
   
   /**

@@ -50,6 +50,10 @@ public:
     return gliste;
   }
 
+  void setGliste(OBJGroupList liste){
+    gliste = liste;
+  }
+
 private:
   vector<Cpoint> pointlist;/**< Liste indexée de sommets.*/
   vector<Cvector> vecteurlist;/**< Liste indexée de Normales aux sommets.*/
@@ -152,9 +156,9 @@ public:
     return gliste.getGroup(i);
   }
 
-  //void toLxs(ostream& lxsFile);
+  void toLxs(ostream& lxsFile);
 
-  //void toJs(ostream& jsFile);
+  void toJs(ostream& jsFile);
 
 };
 

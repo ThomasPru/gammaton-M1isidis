@@ -4,6 +4,8 @@
 
 #include <iostream>
 #include "Obj/OBJReader.hpp"
+#include "Obj/CIntersection.hpp"
+#include <vector>
 
 //------------------
 extern float angle_rotX;
@@ -11,6 +13,7 @@ extern float angle_rotY;
 extern float trans_axeZ;
 
 extern OBJReader r;
+extern vector<CIntersection> list_inter;
 
 /** 
  * Fonction permettant de dessiner un cube centré sur l'origine 
@@ -116,7 +119,19 @@ void dessiner(void)
   glRotatef(angle_rotY, 0.0, 1.0, 0.0);
   //cube(2.0);
   r.drawScene();
-  
+  for(int i =0; i < list_inter.size(); i++){
+    
+    glColor3f((float) rand() / (float) RAND_MAX,
+	      (float) rand() / (float) RAND_MAX,
+	      (float) rand() / (float) RAND_MAX);
+    //list_inter[i].drawSceneIntersection();
+    
+    glBegin(GL_POINTS);
+    glColor3f(0.5,0.5,1);
+    glVertex3f(list_inter[i].getInterX(), list_inter[i].getInterY(), list_inter[i].getInterZ());
+    glEnd();
+    
+  }
   repere(2.0);
   
   glFlush();

@@ -47,14 +47,14 @@ ostream& operator<<(ostream& out, const OBJTriangle& t){
 
 
 
-bool OBJTriangle::getIntersectionWithRay(const CRay& incidentRay, CIntersection *I, OBJReader &r)
+bool OBJTriangle::getIntersectionWithRay(const CRay& incidentRay, CIntersection &I)
 {
    double det,inv_det;
    double u,v,t;
 
    /* find vectors for two edges sharing vert0 */
-   Cvector edge1(r.getPointList()[point[0].getCoordinate()], r.getPointList()[point[1].getCoordinate()]);
-   Cvector edge2(r.getPointList()[point[0].getCoordinate()], r.getPointList()[point[2].getCoordinate()]);
+   Cvector edge1(r.getPointListInd(point[0].getCoordinate()), r.getPointListInd(point[1].getCoordinate()));
+   Cvector edge2(r.getPointListInd(point[0].getCoordinate()), r.getPointListInd(point[2].getCoordinate()));
 
    /* begin calculating determinant - also used to calculate U parameter */
    Cvector pvec(incidentRay.getDirection()^edge2);// Cross product
@@ -64,7 +64,7 @@ bool OBJTriangle::getIntersectionWithRay(const CRay& incidentRay, CIntersection 
    if (det < MOLLEREPSILON) return false;
 
    /* calculate distance from vert0 to ray origin */
-   Cvector tvec(r.getPointList()[point[0].getCoordinate()],incidentRay.getOrigin());
+   Cvector tvec(r.getPointListInd(point[0].getCoordinate()),incidentRay.getOrigin());
 
    /* calculate U parameter and test bounds */
    u = tvec*pvec; // dot product
@@ -84,8 +84,12 @@ bool OBJTriangle::getIntersectionWithRay(const CRay& incidentRay, CIntersection 
    t *= inv_det;
    u *= inv_det;
    v *= inv_det;
-
-   I->setPosition(t,incidentRay,this,u,v);
+   
+   cout << " t = " << t << endl;
+   cout << " U = " << u << endl;
+   cout << " V = " << v << endl;
+   
+   I.setPosition(t,incidentRay,this,u,v);
 
 
    return true;

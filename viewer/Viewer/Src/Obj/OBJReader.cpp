@@ -569,8 +569,8 @@ void OBJReader::importLight(const char* filename)
 
 
 
-//#define OUT
-/*
+#define OUT
+
 void OBJReader::toLxs(ostream& lxsFile){
 
   // démarrer la description des paramètres globaux
@@ -652,4 +652,4 @@ void OBJReader::toJs(ostream& jsFile){
   jsFile << "             ];" << endl;
   cout << "fin de conversion des donnees geometriques" << endl;
 }
-*/
+

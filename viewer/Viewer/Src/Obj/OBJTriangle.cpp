@@ -1,6 +1,7 @@
 #include "OBJTriangle.hpp"
 #include "OBJReader.hpp"
 #include "CIntersection.hpp"
+#include <cmath>
 
 OBJTriangle::OBJTriangle(){
   for(int i=0; i<3; i++){
@@ -47,7 +48,7 @@ ostream& operator<<(ostream& out, const OBJTriangle& t){
 
 
 
-bool OBJTriangle::getIntersectionWithRay(const CRay& incidentRay, CIntersection *I, OBJReader &r)
+bool OBJTriangle::getIntersectionWithRay(const CRay& incidentRay, CIntersection &I)
 {
    double det,inv_det;
    double u,v,t;
@@ -84,8 +85,13 @@ bool OBJTriangle::getIntersectionWithRay(const CRay& incidentRay, CIntersection 
    t *= inv_det;
    u *= inv_det;
    v *= inv_det;
+   
+   cout << " t = " << t << endl;
+   cout << " U = " << u << endl;
+   cout << " V = " << v << endl;
 
-   I->setPosition(t,incidentRay,this,u,v);
+   t=sqrt(t*t);
+   I.setPosition(t,incidentRay,this,u,v);
 
 
    return true;

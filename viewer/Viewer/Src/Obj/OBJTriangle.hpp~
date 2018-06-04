@@ -17,6 +17,10 @@ using namespace std;
 
 
 class CIntersection;
+class OBJReader;
+
+extern OBJReader r;
+
 
 class OBJTriangle {
 private:
