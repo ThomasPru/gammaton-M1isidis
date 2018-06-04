@@ -90,9 +90,7 @@ bool OBJTriangle::getIntersectionWithRay(const CRay& incidentRay, CIntersection 
    t=sqrt(t*t);
    I.setPosition(t,incidentRay,this,u,v);
 
-
    return true;
-
 }
 
 

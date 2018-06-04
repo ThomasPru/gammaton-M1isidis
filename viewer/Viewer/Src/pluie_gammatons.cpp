@@ -8,12 +8,12 @@ pluie_gammatons::pluie_gammatons(int nb_rayons){
   float sd = 0.0;
   float sf = 0.0;
 
-  Cvector v(0.0, -0.5, 0.5);
+  Cvector v(-0.50, -0.5, 0.0);
   
   for(int i = 0; i < nb_rayons; i++){
-    Cpoint p((7*(float) rand() / RAND_MAX)*2-5, 3, -8*((float) rand() / RAND_MAX));
+    Cpoint p((13*(float) rand() / RAND_MAX)-2, 6, 15*((float) rand() / RAND_MAX)-9);
     
-    CRay r(ks, kp, kf, sh, sd, sf, p, v);
+    CRay r(ks, kp, kf, sh, sd, sf, p, v, i);
     list_gam.push_back(r);
     //cout << "nombre de gammatons : " << list_gam.size() << endl;
   }

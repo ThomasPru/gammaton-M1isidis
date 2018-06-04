@@ -61,7 +61,6 @@ static void init_screen(void)
  */
 int main (int argc, char *argv[])
 {
-
 	cout << argv[0] << endl;
 	glutInit (&argc, argv);
 
@@ -82,7 +81,7 @@ int main (int argc, char *argv[])
 
 	//----------------------
 	OBJGroupList test =  rb.getList();
-	pluie_gammatons rain(40000);
+	pluie_gammatons rain(70000);
 
 	bool percut = false;
 
@@ -90,24 +89,28 @@ int main (int argc, char *argv[])
 		for(int i = 0; i < test.size(); i++){ //liste des cubes
 			int nb = rb.getGroup(i)->size();
 			for (int j = 0; j < nb; j++){ // nombre de facettes par objet
-				CIntersection inter;
-				if(rb.getGroup(i)->getFacet(j)->getIntersectionWithRay(rain.getListInd(k),inter) !=-1 && percut == false){
-					list_inter.push_back(inter);
-					percut = true;
-				}
+			  CIntersection inter;
+			  if(rb.getGroup(i)->getFacet(j)->getIntersectionWithRay(rain.getListInd(k),inter)){
+			    if(percut == false){
+			      list_inter.push_back(inter);
+			      percut = true;
+			    }
+			    else{
+			      if(list_inter[list_inter.size()-1].getOriginRay().getId() == rain.getListInd(k).getId()){
+			      }
+			    }
 			  }
+			}
+			
 		}
 		percut = false;
-		cout << "nombre d'intersections : " << list_inter.size() << endl;
 	}
-
+	
 	init_screen();
 
 	glEnable(GL_DEPTH_TEST);
 	glutMainLoop();
-
-
+	
+	
 	return 0;
 }
-
-

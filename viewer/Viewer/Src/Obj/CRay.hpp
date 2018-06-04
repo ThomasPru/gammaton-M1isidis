@@ -21,10 +21,14 @@ private:
   //---direction
   Cvector direction;
 
+  int id;
+
+
 public:
+  CRay();
   CRay(float ks, float kp, float kf,
        float sh, float sd, float sf,
-       Cpoint p, Cvector v);
+       Cpoint p, Cvector v, int id);
   
   float getStraightLine() const;
   float getParabolicCurve() const;
@@ -38,6 +42,8 @@ public:
   Cpoint getOrigin() const;
 
   Cvector getDirection() const;
+
+  int getId() const;
 };
 
 #endif

@@ -1,8 +1,11 @@
 #include "CRay.hpp"
 
+CRay::CRay(){
+}
+
 CRay::CRay(float ks, float kp, float kf,
 	   float sh, float sd, float sf,
-	   Cpoint p, Cvector v){
+	   Cpoint p, Cvector v, int id_cray){
   _ks = ks;
   _kp = kp;
   _kf = kf;
@@ -13,6 +16,8 @@ CRay::CRay(float ks, float kp, float kf,
 
   origin = p;
   direction = v;
+
+  id = id_cray;
   
 }
 
@@ -43,4 +48,8 @@ Cpoint CRay::getOrigin() const{
 
 Cvector CRay::getDirection() const{
   return direction;
+}
+
+int CRay::getId() const{
+  return id;
 }

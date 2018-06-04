@@ -23,6 +23,8 @@ void CIntersection::setPosition(const double& nT,
    objet=Facet;
    alpha=nalpha;
    beta=nbeta;
+
+   origin_ray = Ray;
 }
 
 void CIntersection::drawSceneIntersection(){
@@ -42,4 +44,8 @@ double CIntersection::getInterY() const{
 
 double CIntersection::getInterZ() const{
   return z;
+}
+
+CRay CIntersection::getOriginRay() const{
+  return origin_ray;
 }

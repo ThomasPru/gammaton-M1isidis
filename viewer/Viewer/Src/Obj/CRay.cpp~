@@ -2,7 +2,7 @@
 
 CRay::CRay(float ks, float kp, float kf,
 	   float sh, float sd, float sf,
-	   Cpoint p){
+	   Cpoint p, Cvector v){
   _ks = ks;
   _kp = kp;
   _kf = kf;
@@ -12,27 +12,27 @@ CRay::CRay(float ks, float kp, float kf,
   _sf = sf;
 
   origin = p;
-  //rand()%1-0.5
+  direction = v;
   
 }
 
-float CRay::getStraightLine(){
+float CRay::getStraightLine() const{
   return _ks;
 }
-float CRay::getParabolicCurve(){
+float CRay::getParabolicCurve() const{
   return _kp;
 }
-float CRay::getFlowing(){
+float CRay::getFlowing() const{
   return _kf;
 }
   
-float CRay::getHumidity(){
+float CRay::getHumidity() const{
   return _sh;
 }
-float CRay::getAmountDirt(){
+float CRay::getAmountDirt() const{
   return _sd;
 }
-float CRay::getAmountFungus(){
+float CRay::getAmountFungus() const{
   return _sf;
 }
 
@@ -41,14 +41,6 @@ Cpoint CRay::getOrigin() const{
   return origin;
 }
 
-float CRay::getDirX() const{
-    return _depX;
-}
-
-float CRay::getDirY() const{
-  return _depY;
-}
-
-float CRay::getDirZ() const{
-  return _depZ;
+Cvector CRay::getDirection() const{
+  return direction;
 }
