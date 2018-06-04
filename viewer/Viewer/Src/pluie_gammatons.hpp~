@@ -10,6 +10,7 @@ private:
 public:  
   pluie_gammatons(int nb_rayons);
   int getSizeListGam();
+  CRay getListInd(int i);
 };
 
 #endif

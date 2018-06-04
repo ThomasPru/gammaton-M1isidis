@@ -6,7 +6,7 @@
 #include "touches.h"
 #include "Obj/CIntersection.hpp"
 
-#include "pluie_gammatons.hpp"
+//#include "pluie_gammatons.hpp"
 #include "Obj/OBJReader.hpp"
 #include <iostream>
 
@@ -22,7 +22,57 @@ float trans_axeZ = -10.0;
 
 OBJReader r("./Scenes", "sceneTest.obj");
 OBJReader rb("./Scenes", "sceneTest.obj");
+pluie_gammatons rain(1000);
 vector<CIntersection> list_inter;
+
+void Generation_gammatons(bool isFirstIteration){
+  if(!isFirstIteration){
+    Cvector v(-0.50, -0.5, 0.0);
+    float ks = 0.0;
+    float kp = 0.0;
+    float kf = 0.0;
+    float sh = 0.0;
+    float sd = 0.0;
+    float sf = 0.0;
+    int limite = rain.getSizeListGam();
+    for(int k = limite; k < limite+10000; k++){
+      
+      Cpoint p((13*(float) rand() / RAND_MAX)-2, 6, 15*((float) rand() / RAND_MAX)-9);
+    
+      CRay r(ks, kp, kf, sh, sd, sf, p, v, k);
+      rain.list_gam.push_back(r);
+    }
+  }
+  
+  OBJGroupList test =  rb.getList();
+
+  bool percut = false;
+
+  for(int k = 0; k < rain.getSizeListGam(); k++){ // pour chaque gammatons
+    for(int i = 0; i < test.size(); i++){ //liste des cubes
+      int nb = rb.getGroup(i)->size();
+      for (int j = 0; j < nb; j++){ // nombre de facettes par objet
+	CIntersection inter;
+	if(rb.getGroup(i)->getFacet(j)->getIntersectionWithRay(rain.getListInd(k),inter)){
+	  if(percut == false){
+	    list_inter.push_back(inter);
+	    percut = true;
+	  }
+	  else{
+	    if(list_inter[list_inter.size()-1].getOriginRay().getId() == rain.getListInd(k).getId()){
+	    }
+	  }
+	}
+      }
+			
+    }
+    percut = false;
+  }
+  test.clear();
+}
+
+
+
 /**
  * Fonction d'initialisation des paramètres d'affichage
  */
@@ -52,6 +102,10 @@ static void init_screen(void)
 }
 
 
+
+
+
+
 /**
  * Fonction principale qui crée et initialise la fenêtre
  * d'affichage et lance la boucle d'affichage Glut.
@@ -76,35 +130,8 @@ int main (int argc, char *argv[])
 	/* choix de la fonction des gestion des touches */
 	glutKeyboardFunc(gerer_clavier);
 
-
-
-
 	//----------------------
-	OBJGroupList test =  rb.getList();
-	pluie_gammatons rain(70000);
-
-	bool percut = false;
-
-	for(int k = 0; k < rain.getSizeListGam(); k++){ // pour chaque gammatons
-		for(int i = 0; i < test.size(); i++){ //liste des cubes
-			int nb = rb.getGroup(i)->size();
-			for (int j = 0; j < nb; j++){ // nombre de facettes par objet
-			  CIntersection inter;
-			  if(rb.getGroup(i)->getFacet(j)->getIntersectionWithRay(rain.getListInd(k),inter)){
-			    if(percut == false){
-			      list_inter.push_back(inter);
-			      percut = true;
-			    }
-			    else{
-			      if(list_inter[list_inter.size()-1].getOriginRay().getId() == rain.getListInd(k).getId()){
-			      }
-			    }
-			  }
-			}
-			
-		}
-		percut = false;
-	}
+	Generation_gammatons(true);
 	
 	init_screen();
 

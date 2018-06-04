@@ -120,18 +120,13 @@ void dessiner(void)
   //cube(2.0);
   r.drawScene();
   for(int i =0; i < list_inter.size(); i++){
-    glLoadIdentity();
+    
     glColor3f((float) rand() / (float) RAND_MAX,
 	      (float) rand() / (float) RAND_MAX,
 	      (float) rand() / (float) RAND_MAX);
-    //list_inter[i].drawSceneIntersection();
-    glTranslatef(list_inter[i].getInterX(), list_inter[i].getInterY(), list_inter[i].getInterZ()+trans_axeZ);
-    glBegin(GL_POINTS);
-    glColor3f(0.5,0.5,1);
-    glutSolidSphere(0.1, 20.0, 20.0);
-    glLoadIdentity();
-    glTranslatef(0, 0, trans_axeZ);
-    glEnd();
+    list_inter[i].drawSceneIntersection();
+   
+    
   }
   repere(2.0);
   

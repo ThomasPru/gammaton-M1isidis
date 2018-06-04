@@ -102,8 +102,7 @@ static void repere(float dim)
  * d'affichage sera nécessaire.
  */
 
-void dessiner(void)
-{
+void dessiner(void){
   
   /* effacer l'ecran */
   glClearColor(0.0, 0.0, 0.0, 1.0);
@@ -120,13 +119,7 @@ void dessiner(void)
   //cube(2.0);
   r.drawScene();
   for(int i =0; i < list_inter.size(); i++){
-    
-    glColor3f((float) rand() / (float) RAND_MAX,
-	      (float) rand() / (float) RAND_MAX,
-	      (float) rand() / (float) RAND_MAX);
     list_inter[i].drawSceneIntersection();
-   
-    
   }
   repere(2.0);
   
