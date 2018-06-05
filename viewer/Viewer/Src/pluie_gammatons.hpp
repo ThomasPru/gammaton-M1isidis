@@ -4,9 +4,9 @@
 #include "Obj/CRay.hpp"
 #include <vector>
 
+using namespace std;
+
 class pluie_gammatons{
-private:
-  
 public:  
   pluie_gammatons(int nb_rayons);
   int getSizeListGam();

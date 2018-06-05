@@ -11,6 +11,16 @@ OBJTriangle::OBJTriangle(){
   }
 }
 
+OBJTriangle::OBJTriangle(Surf surf){
+  for(int i=0; i<3; i++){
+    point[i].setCoordinate(-1);
+    point[i].setNormal(-1);
+    point[i].setTexture(-1);
+  }
+  
+  //surface = surf;
+}
+
 void OBJTriangle::setVertices(int i, int j, int k){
   point[0].setCoordinate(i);
   point[1].setCoordinate(j);
@@ -90,9 +100,7 @@ bool OBJTriangle::getIntersectionWithRay(const CRay& incidentRay, CIntersection 
    t=sqrt(t*t);
    I.setPosition(t,incidentRay,this,u,v);
 
-
    return true;
-
 }
 
 

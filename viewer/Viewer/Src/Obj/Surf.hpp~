@@ -1,0 +1,17 @@
+#ifndef SURF_HPP_
+#define SURF_HPP_
+
+class Surf{
+private:
+  //material
+  float _sh, _sd, sf;
+
+  //deterioration rate
+  float _ds, _dp, _sf;
+public:
+  
+  
+  
+};
+
+#endif

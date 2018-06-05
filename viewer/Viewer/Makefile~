@@ -39,7 +39,7 @@ $(OBJ)/CRay.o:	$(SRC)/Obj/CRay.cpp $(SRC)/Obj/CRay.hpp
 
 
 $(OBJ)/CIntersection.o:	$(SRC)/Obj/CIntersection.cpp $(SRC)/Obj/CIntersection.hpp
-	g++ -c $(SRC)/Obj/CIntersection.cpp -o $(OBJ)/CIntersection.o $(OPT)
+	g++ -c $(SRC)/Obj/CIntersection.cpp -o $(OBJ)/CIntersection.o $(OPT) $(INCLUDE) $(OPT)
 
 
 $(OBJ)/graphique.o:	$(SRC)/graphique.c

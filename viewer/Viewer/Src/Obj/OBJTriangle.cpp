@@ -11,6 +11,21 @@ OBJTriangle::OBJTriangle(){
   }
 }
 
+OBJTriangle::OBJTriangle(Surf surfac){
+  for(int i=0; i<3; i++){
+    point[i].setCoordinate(-1);
+    point[i].setNormal(-1);
+    point[i].setTexture(-1);
+  }
+  
+  surface = surfac;
+}
+
+Surf OBJTriangle::getSurface() const{
+  return surface;
+}
+
+
 void OBJTriangle::setVertices(int i, int j, int k){
   point[0].setCoordinate(i);
   point[1].setCoordinate(j);

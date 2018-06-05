@@ -23,6 +23,8 @@ private:
   double x;
   double y;
   double z;
+
+  CRay origin_ray;
   
 public:
   CIntersection();
@@ -37,6 +39,8 @@ public:
   double getInterX() const;
   double getInterY() const;
   double getInterZ() const;
+
+  CRay getOriginRay() const;
 };
 
 #endif

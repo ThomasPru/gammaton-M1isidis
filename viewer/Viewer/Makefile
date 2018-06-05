@@ -24,8 +24,8 @@ SRC=./Src
 
 #viewer:	$(OBJ)/viewer.o $(OBJ)/graphique.o $(OBJ)/touches.o   
 #	$(CC) -o viewer $(OBJ)/viewer.o $(OBJ)/graphique.o $(OBJ)/touches.o  $(OPT)  $(LIB)
-viewer:	$(OBJ)/viewer.o $(OBJ)/pluie_gammatons.o $(OBJ)/graphique.o $(OBJ)/touches.o  $(OBJ)/OBJReader.o $(OBJ)/CRay.o $(OBJ)/CIntersection.o $(OBJ)/OBJMaterial.o $(OBJ)/OBJGroup.o $(OBJ)/OBJGroupList.o $(OBJ)/OBJTriangle.o  $(OBJ)/OBJLight.o $(OBJ)/Cpoint.o $(OBJ)/Cvector.o $(OBJ)/OBJVertex.o
-	$(CC) -o viewer $(OBJ)/viewer.o $(OBJ)/pluie_gammatons.o $(OBJ)/graphique.o $(OBJ)/touches.o  $(OBJ)/OBJReader.o $(OBJ)/CRay.o $(OBJ)/CIntersection.o $(OBJ)/OBJMaterial.o $(OBJ)/OBJGroup.o $(OBJ)/OBJGroupList.o $(OBJ)/OBJTriangle.o  $(OBJ)/OBJLight.o $(OBJ)/Cpoint.o $(OBJ)/Cvector.o $(OBJ)/OBJVertex.o $(OPT)  $(LIB)
+viewer:	$(OBJ)/viewer.o $(OBJ)/pluie_gammatons.o $(OBJ)/graphique.o $(OBJ)/touches.o  $(OBJ)/OBJReader.o $(OBJ)/CRay.o $(OBJ)/Surf.o $(OBJ)/CIntersection.o $(OBJ)/OBJMaterial.o $(OBJ)/OBJGroup.o $(OBJ)/OBJGroupList.o $(OBJ)/OBJTriangle.o  $(OBJ)/OBJLight.o $(OBJ)/Cpoint.o $(OBJ)/Cvector.o $(OBJ)/OBJVertex.o
+	$(CC) -o viewer $(OBJ)/viewer.o $(OBJ)/pluie_gammatons.o $(OBJ)/graphique.o $(OBJ)/touches.o  $(OBJ)/OBJReader.o $(OBJ)/CRay.o $(OBJ)/Surf.o $(OBJ)/CIntersection.o $(OBJ)/OBJMaterial.o $(OBJ)/OBJGroup.o $(OBJ)/OBJGroupList.o $(OBJ)/OBJTriangle.o  $(OBJ)/OBJLight.o $(OBJ)/Cpoint.o $(OBJ)/Cvector.o $(OBJ)/OBJVertex.o $(OPT)  $(LIB)
 
 $(OBJ)/viewer.o:	$(SRC)/viewer.cpp
 	$(CC) -c $(SRC)/viewer.cpp -o $(OBJ)/viewer.o   $(OPT) $(INCLUDE)  $(OPT)
@@ -34,9 +34,12 @@ $(OBJ)/pluie_gammatons.o:	$(SRC)//pluie_gammatons.cpp
 	$(CC) -c $(SRC)//pluie_gammatons.cpp -o $(OBJ)//pluie_gammatons.o   $(OPT)
 
 
+
 $(OBJ)/CRay.o:	$(SRC)/Obj/CRay.cpp $(SRC)/Obj/CRay.hpp
 	g++ -c $(SRC)/Obj/CRay.cpp -o $(OBJ)/CRay.o $(OPT)
 
+$(OBJ)/Surf.o:	$(SRC)/Obj/Surf.cpp $(SRC)/Obj/Surf.hpp
+	g++ -c $(SRC)/Obj/Surf.cpp -o $(OBJ)/Surf.o $(OPT)
 
 $(OBJ)/CIntersection.o:	$(SRC)/Obj/CIntersection.cpp $(SRC)/Obj/CIntersection.hpp
 	g++ -c $(SRC)/Obj/CIntersection.cpp -o $(OBJ)/CIntersection.o $(OPT) $(INCLUDE) $(OPT)

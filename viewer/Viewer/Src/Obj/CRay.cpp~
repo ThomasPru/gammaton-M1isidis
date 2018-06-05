@@ -1,8 +1,12 @@
 #include "CRay.hpp"
 
+#include "OBJTriangle.hpp"
+CRay::CRay(){
+}
+
 CRay::CRay(float ks, float kp, float kf,
 	   float sh, float sd, float sf,
-	   Cpoint p, Cvector v){
+	   Cpoint p, Cvector v, int id_cray){
   _ks = ks;
   _kp = kp;
   _kf = kf;
@@ -13,6 +17,8 @@ CRay::CRay(float ks, float kp, float kf,
 
   origin = p;
   direction = v;
+
+  id = id_cray;
   
 }
 
@@ -36,7 +42,6 @@ float CRay::getAmountFungus() const{
   return _sf;
 }
 
-
 Cpoint CRay::getOrigin() const{
   return origin;
 }
@@ -44,3 +49,9 @@ Cpoint CRay::getOrigin() const{
 Cvector CRay::getDirection() const{
   return direction;
 }
+
+int CRay::getId() const{
+  return id;
+}
+
+//void CRay::postHit(OBJTriangle surface){

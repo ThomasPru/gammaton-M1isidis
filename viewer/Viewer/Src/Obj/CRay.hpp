@@ -6,6 +6,8 @@
 #include "../Cpoint.hpp"
 #include "../Cvector.hpp"
 
+class OBJTriangle;
+
 class CRay{
 private:
   //motion probabilities : straight line, parabolic curve, flowing
@@ -14,7 +16,6 @@ private:
   //Carrier attributes : humidity, amount of dirt, amount of fungus
   float _sh, _sd, _sf;
 
-  
   //position
   Cpoint origin;
   
@@ -22,7 +23,6 @@ private:
   Cvector direction;
 
   int id;
-
 
 public:
   CRay();
@@ -44,6 +44,9 @@ public:
   Cvector getDirection() const;
 
   int getId() const;
+  
+  void postHit(OBJTriangle surface);
+  
 };
 
 #endif

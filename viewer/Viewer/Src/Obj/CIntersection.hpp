@@ -31,7 +31,7 @@ public:
   CIntersection(const Cpoint& p, OBJTriangle* o, const float& t);
   ~CIntersection(){}; // ne pas effacer objet !!!
 
-  void setPosition(const double& nT,  const CRay& Ray, OBJTriangle *Facet,
+  void setPosition(const double& nT, const CRay& Ray, OBJTriangle *Facet,
 	      const double& nalpha, const double& nbeta);
 
   void drawSceneIntersection();
@@ -41,6 +41,8 @@ public:
   double getInterZ() const;
 
   CRay getOriginRay() const;
+
+  void postHit(CRay& ray);
 };
 
 #endif

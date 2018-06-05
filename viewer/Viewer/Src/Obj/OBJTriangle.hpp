@@ -8,9 +8,10 @@
 //-------------------
 //--Added
 #include "CRay.hpp"
+#include "Surf.hpp"
 //-------------------
 
-#include <iostream>
+//#include <iostream>
 #include <list>
 #include <vector>
 using namespace std;
@@ -25,8 +26,10 @@ extern OBJReader r;
 class OBJTriangle {
 private:
   OBJVertex point[3];
+  Surf surface;
 public:
   OBJTriangle();
+  OBJTriangle(Surf surfac);
   ~OBJTriangle(){};
 
   void setVertices(int i, int j, int k);
@@ -38,5 +41,7 @@ public:
   bool getIntersectionWithRay(const CRay& incidentRay, CIntersection &I);
 
   friend ostream& operator<<(ostream& out, const OBJTriangle& t);
+
+  Surf getSurface() const;
 };
 #endif

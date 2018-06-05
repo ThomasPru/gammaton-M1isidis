@@ -4,6 +4,20 @@ pluie_gammatons::pluie_gammatons(int nb_rayons){
   float ks = 0.0;
   float kp = 0.0;
   float kf = 0.0;
+  /*
+  cout << "Choisir les motion probabilities des gammatons (straight, parabolic, flow) " << endl;
+  cout << "La somme doit etre inferieure a 1  et differents" << endl;
+  do{
+    cout << "Saisir de nouveau" << endl;
+    cout << " probabilité straight = " << endl;
+    cin >> ks;
+    cout << " probabilité parabolic = " << endl;
+    cin >> kp;
+    cout << " probabilité flow = " << endl;
+    cin >> kf;
+  }
+  while((((ks + kp + kf) > 1) || (ks == kp) || (ks == kf) || (kp == kf)));
+  */
   float sh = 0.0;
   float sd = 0.0;
   float sf = 0.0;
@@ -15,7 +29,6 @@ pluie_gammatons::pluie_gammatons(int nb_rayons){
     
     CRay r(ks, kp, kf, sh, sd, sf, p, v, i);
     list_gam.push_back(r);
-    //cout << "nombre de gammatons : " << list_gam.size() << endl;
   }
 }
 

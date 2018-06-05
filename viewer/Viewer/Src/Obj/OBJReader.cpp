@@ -229,7 +229,8 @@ OBJReader::OBJReader(const string& dataDirectory,
 	    }
 	    if(erreurNormale) break;
 	    // création de la première facette
-	    P = new OBJTriangle();
+	    P = new OBJTriangle(Surf(0.5,0.5,0.5,0.5,0.5,0.5));
+	    
 	    P->setVertices(v[0]-1, v[1]-1, v[2]-1);
 	    if(texture) P->setTextures(t[0]-1, t[1]-1, t[2]-1);
 	    // corriger l'indice de normale pour tenir compte
@@ -241,7 +242,7 @@ OBJReader::OBJReader(const string& dataDirectory,
 
 	    // création éventuelle de la seconde facette
 	    if(nbsom==4){
-	      P = new OBJTriangle();
+	      P = new OBJTriangle(Surf(0.5,0.5,0.5,0.5,0.5,0.5));
 	      P->setVertices(v[0]-1, v[2]-1, v[3]-1);
 	      if(texture) P->setTextures(t[0]-1, t[2]-1, t[3]-1);
 	      P->setNormals(n[0]-1, n[2]-1, n[3]-1);
@@ -282,8 +283,6 @@ OBJReader::OBJReader(const string& dataDirectory,
 	    // lui ajouter le nouveau materiau
 	    gcurrent->setMaterial(currentmaterial);
 	  }
-	  
-
 	  break;
 	}
 
@@ -433,7 +432,6 @@ void OBJReader::importMaterial(const char* dataDirectory,
 
 
 void OBJReader::drawScene(){
-  cout << "------------------------" << endl;
   
   OBJGroupList test =  gliste;
   
