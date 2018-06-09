@@ -43,6 +43,8 @@ public:
   CRay getOriginRay() const;
 
   void postHit(CRay& ray);
+
+  float getDistFromOri() const;
 };
 
 #endif

@@ -20,23 +20,24 @@ float angle_rotY = 0.0;
 float angle_rotX = 0.0;
 float trans_axeZ = -10.0;
 
-OBJReader r("./Scenes", "cube1.obj");
-OBJReader rb("./Scenes", "cube1.obj");
+float ks;
+float kp;
+float kf;
+
+OBJReader r("./Scenes", "sceneTest.obj");
+OBJReader rb("./Scenes", "sceneTest.obj");
 pluie_gammatons rain(1000);
 vector<CIntersection> list_inter;
+
 
 void Generation_gammatons(bool isFirstIteration){
   if(!isFirstIteration){
     Cvector v(-0.50, -0.5, 0.0);
-    float ks = 0.0;
-    float kp = 0.0;
-    float kf = 0.0;
     float sh = 0.0;
     float sd = 0.0;
     float sf = 0.0;
     int limite = rain.getSizeListGam();
     for(int k = limite; k < limite+10000; k++){
-      
       Cpoint p((13*(float) rand() / RAND_MAX)-2, 6, 15*((float) rand() / RAND_MAX)-9);
     
       CRay r(ks, kp, kf, sh, sd, sf, p, v, k);
@@ -103,9 +104,6 @@ static void init_screen(void)
 
 
 
-
-
-
 /**
  * Fonction principale qui crée et initialise la fenêtre
  * d'affichage et lance la boucle d'affichage Glut.
@@ -115,30 +113,44 @@ static void init_screen(void)
  */
 int main (int argc, char *argv[])
 {
-	cout << argv[0] << endl;
-	glutInit (&argc, argv);
+  /*
+  cout << "Choisir les motion probabilities des gammatons (straight, parabolic, flow) " << endl;
+  cout << "La somme doit etre inferieure a 1  et differents" << endl;
+  do{
+    cout << "Saisir de nouveau" << endl;
+    cout << " probabilité straight = " << endl;
+    cin >> ks;
+    cout << " probabilité parabolic = " << endl;
+    cin >> kp;
+    cout << " probabilité flow = " << endl;
+    cin >> kf;
+  }
+  while(((ks + kp + kf) >1) || (ks == kp) || (ks == kf) || (kp == kf));
+  */
+  cout << argv[0] << endl;
+  glutInit (&argc, argv);
 
-	glutInitWindowPosition(100, 100); 
-	glutInitWindowSize(LARGEUR, HAUTEUR); 
+  glutInitWindowPosition(100, 100); 
+  glutInitWindowSize(LARGEUR, HAUTEUR); 
 
-	glutInitDisplayMode(GLUT_DEPTH);
+  glutInitDisplayMode(GLUT_DEPTH);
 
-	glutCreateWindow(argv[0]);
+  glutCreateWindow(argv[0]);
 
-	/* choix de la fonction de rafraichissement */
-	glutDisplayFunc(dessiner);
-	/* choix de la fonction des gestion des touches */
-	glutKeyboardFunc(gerer_clavier);
+  /* choix de la fonction de rafraichissement */
+  glutDisplayFunc(dessiner);
+  /* choix de la fonction des gestion des touches */
+  glutKeyboardFunc(gerer_clavier);
 
-	//----------------------
+  //----------------------
 	
-	Generation_gammatons(true);
+  Generation_gammatons(true);
 	
-	init_screen();
+  init_screen();
 
-	glEnable(GL_DEPTH_TEST);
-	glutMainLoop();
+  glEnable(GL_DEPTH_TEST);
+  glutMainLoop();
 	
 	
-	return 0;
+  return 0;
 }

@@ -24,8 +24,8 @@ float ks;
 float kp;
 float kf;
 
-OBJReader r("./Scenes", "sceneTest.obj");
-OBJReader rb("./Scenes", "sceneTest.obj");
+OBJReader r("./Scenes", "cube1.obj");
+OBJReader rb("./Scenes", "cube1.obj");
 pluie_gammatons rain(1000);
 vector<CIntersection> list_inter;
 
@@ -47,13 +47,18 @@ void Generation_gammatons(bool isFirstIteration){
   
   OBJGroupList test =  rb.getList();
 
-  bool percut = false;
+  //bool percut = false;
 
+  //--------
+  //On parcourt pour chaque rayon, chaque facette et on vérifie si il y a
+  //intersection. Si oui, on stocke cette intersection dans une liste
+  
   for(int k = 0; k < rain.getSizeListGam(); k++){ // pour chaque gammatons
     for(int i = 0; i < test.size(); i++){ //liste des cubes
       int nb = rb.getGroup(i)->size();
       for (int j = 0; j < nb; j++){ // nombre de facettes par objet
 	CIntersection inter;
+	/*
 	if(rb.getGroup(i)->getFacet(j)->getIntersectionWithRay(rain.getListInd(k),inter)){
 	  if(percut == false){
 	    list_inter.push_back(inter);
@@ -63,13 +68,33 @@ void Generation_gammatons(bool isFirstIteration){
 	    if(list_inter[list_inter.size()-1].getOriginRay().getId() == rain.getListInd(k).getId()){
 	    }
 	  }
+	  }
+	*/
+	if(rb.getGroup(i)->getFacet(j)->getIntersectionWithRay(rain.getListInd(k),inter)){
+	  list_inter.push_back(inter);
 	}
+	
       }
 			
     }
-    percut = false;
+    //percut = false;
   }
   test.clear();
+
+  //--On parcourt toutes les intersections pour supprimer toutes les intersections
+  //--impliquant un gammaton qui a déjà percuté une facette avant ( distance inferieure ) 
+  for(int i = 0; i < list_inter.size()-1; i++){
+    int k = i+1;
+    while(list_inter[k].getOriginRay().getId() == list_inter[i].getOriginRay().getId()){
+      if(list_inter[k].getDistFromOri() > list_inter[i].getDistFromOri()){
+	list_inter.erase(list_inter.begin()+k);
+      }
+      else{
+	list_inter.erase(list_inter.begin()+i);
+      }
+      i--;
+    }
+  }
 }
 
 
@@ -143,7 +168,8 @@ int main (int argc, char *argv[])
   glutKeyboardFunc(gerer_clavier);
 
   //----------------------
-	
+  //---Premiere iteration, on genere 1000 gammatons
+  //-- puis en pressant  F5 on rajoute 10000 gammatons pour observer l'évolution
   Generation_gammatons(true);
 	
   init_screen();

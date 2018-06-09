@@ -49,3 +49,7 @@ double CIntersection::getInterZ() const{
 CRay CIntersection::getOriginRay() const{
   return origin_ray;
 }
+
+float CIntersection::getDistFromOri() const{
+  return distance;
+}
